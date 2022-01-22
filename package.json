@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/hamishgibbs/linklean/issues"
   },
-  "homepage": "https://github.com/hamishgibbs/linklean#readme"
+  "homepage": "https://github.com/hamishgibbs/linklean#readme",
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  }
 }
