@@ -2,13 +2,18 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const Greeter = (name: string) => `Hello ${name}`;
 
+interface IQualifier {
+  qualifier: string;
+  target: string;
+}
+
 export class Node {
-  uuid: string;
+  id: string;
   created: Date;
   removed: null|Date;
 
   constructor() {
-    this.uuid = uuidv4();
+    this.id = uuidv4();
     this.created = new Date();
     this.removed = null;
   }
@@ -18,40 +23,27 @@ export class Edge {
   subject: string;
   predicate: string;
   object: string;
-  uuid: string;
+  qualifiers: IQualifier[];
+  id: string;
   created: Date;
   removed: null|Date;
 
   constructor(
     subject: string,
     predicate: string,
-    object: string) {
-    this.uuid = uuidv4();
+    object: string,
+    qualifiers: IQualifier[] = []) {
+    this.id = uuidv4();
     this.created = new Date();
     this.removed = null;
     this.subject = subject,
     this.predicate = predicate,
     this.object = object
-    // Need to add qualifiers
+    this.qualifiers = qualifiers
   }
 }
 
 /*
-Node {
-	uuid: 1
-	created: ts
-	removed: ts
-}
-
-Edge {
-	uuid: 2
-	subject: uuid
-	predicate: string
-	object: uuid
-	qualifiers: [string: uuid, ...]
-	created: ts
-	removed: ts
-}
 
 Graph {
   nodes: []
