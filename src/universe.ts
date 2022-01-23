@@ -75,9 +75,5 @@ export class Universe {
     this.fromYAML(doc);
   }
 
-  // remove entity
-  // remove node
-  // remove edge
-
   // building & versioning
 }
