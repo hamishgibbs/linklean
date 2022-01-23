@@ -1,5 +1,5 @@
 import { Node } from './node';
-import { Edge } from './edge';
+import { Edge, IQualifier } from './edge';
 
 interface IGraph {
   nodes: Node[];
@@ -19,5 +19,20 @@ export class Universe {
     const node = new Node();
     this.graph.nodes.push(node);
     return node.id;
+  }
+
+  addEdge(
+    subject: string,
+    predicate: string,
+    object: string,
+    qualifiers: IQualifier[] = []) {
+    const edge = new Edge(
+      subject,
+      predicate,
+      object,
+      qualifiers
+    );
+    this.graph.edges.push(edge);
+    return edge.id;
   }
 }
