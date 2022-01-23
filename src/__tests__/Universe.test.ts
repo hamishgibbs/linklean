@@ -1,4 +1,4 @@
-import { uuid_re } from './fixtures/utils'
+import { uuid_re } from './fixtures/utils';
 import { Universe } from '../index';
 
 test('Universe Creation', () => {

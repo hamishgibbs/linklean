@@ -1,4 +1,4 @@
-import { Node, Edge } from '../index';
+import { Edge } from '../index';
 
 test('Edge Creation', () => {
   var edge = new Edge("this", "isa", "that")
