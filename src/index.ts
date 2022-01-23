@@ -43,6 +43,32 @@ export class Edge {
   }
 }
 
+interface IGraph {
+  nodes: Node[];
+  edges: Edge[]
+}
+
+export class Universe {
+  graph: IGraph;
+  history: IGraph;
+
+  constructor(){
+    this.graph = {nodes: [], edges: []};
+    this.history = {nodes: [], edges: []};
+  }
+
+  addNode(){
+    // create a node
+    var node = new Node();
+
+    // add node to graph
+    this.graph.nodes.push(node)
+
+    // return node ID
+    return node.id
+  }
+}
+
 /*
 
 Graph {
