@@ -3,9 +3,17 @@ import { Edge, IQualifier } from './edge';
 import * as yaml from 'js-yaml';
 import { writeFileSync, readFileSync } from 'fs';
 
+interface INodeStore {
+  [key: string]: Node
+}
+
+interface IEdgeStore {
+  [key: string]: Edge
+}
+
 interface IGraph {
-  nodes: Node[];
-  edges: Edge[];
+  nodes: INodeStore;
+  edges: IEdgeStore;
 }
 
 interface IUniverse {
@@ -18,19 +26,19 @@ export class Universe {
   history: IGraph;
 
   constructor() {
-    this.graph = { nodes: [], edges: [] };
-    this.history = { nodes: [], edges: [] };
+    this.graph = { nodes: {}, edges: {} };
+    this.history = { nodes: {}, edges: {} };
   }
 
   addNode() {
     const node = new Node();
-    this.graph.nodes.push(node);
+    this.graph.nodes[node.id] = node;
     return node.id;
   }
 
   addEdge(subject: string, predicate: string, object: string, qualifiers: IQualifier[] = []) {
     const edge = new Edge(subject, predicate, object, qualifiers);
-    this.graph.edges.push(edge);
+    this.graph.edges[edge.id] = edge;
     return edge.id;
   }
 

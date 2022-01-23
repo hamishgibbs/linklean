@@ -3,27 +3,28 @@ import { Universe } from '../universe';
 
 test('Universe Creation', () => {
   const universe = new Universe();
-  expect(universe.graph).toStrictEqual({ nodes: [], edges: [] });
-  expect(universe.history).toStrictEqual({ nodes: [], edges: [] });
+  expect(universe.graph).toStrictEqual({ nodes: {}, edges: {} });
+  expect(universe.history).toStrictEqual({ nodes: {}, edges: {} });
 });
 
 test('Universe.addNode()', () => {
   const universe = new Universe();
-  expect(universe.addNode()).toEqual(expect.not.stringMatching(uuid_re));
-  expect(universe.graph.nodes).toHaveLength(1);
+  const res = universe.addNode()
+  expect(res).toEqual(expect.not.stringMatching(uuid_re));
+  expect(universe.graph.nodes).toHaveProperty(res);
 });
 
 test('Universe.addEdge()', () => {
   const universe = new Universe();
   const res = universe.addEdge('this', 'isa', 'that', [{ qualifier: 'on', target: 'here' }]);
   expect(res).toEqual(expect.not.stringMatching(uuid_re));
-  expect(universe.graph.edges).toHaveLength(1);
+  expect(universe.graph.edges).toHaveProperty(res);
 });
 
 test('Universe.toYAML()', () => {
   const universe = new Universe();
   const res = universe.toYAML();
-  const expected = 'graph:\n  nodes: []\n  edges: []\nhistory:\n  nodes: []\n  edges: []\n';
+  const expected = 'graph:\n  nodes: {}\n  edges: {}\nhistory:\n  nodes: {}\n  edges: {}\n';
   expect(res).toBe(expected);
 });
 
