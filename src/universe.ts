@@ -36,8 +36,10 @@ export class Universe {
     return edge.id;
   }
 
-  // save() to save entire graph (to a file for now)
+  // universe.toYML() - this can be unit tested
 
-  // load () to construct entire graph (from a file for now)
+  // save() to save entire graph (to a file for now) - this can't be unit tested
+
+  // load () to construct entire graph (from a file for now) - this can't be unit tested
 
 }
