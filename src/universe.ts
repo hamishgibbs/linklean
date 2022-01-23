@@ -39,6 +39,7 @@ export class Universe {
   removeNode(id: string) {
     const node = this.graph.nodes[id]
     this.history.nodes[id] = node
+    this.history.nodes[id].removed = new Date()
     delete this.graph.nodes[id]
     return id
   }
@@ -52,6 +53,7 @@ export class Universe {
   removeEdge(id: string) {
     const edge = this.graph.edges[id]
     this.history.edges[id] = edge
+    this.history.edges[id].removed = new Date()
     delete this.graph.edges[id]
     return id
   }
