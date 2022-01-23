@@ -22,3 +22,18 @@ test('Universe.addEdge()', () => {
   expect(res).toEqual(expect.not.stringMatching(uuid_re));
   expect(universe.graph.edges).toHaveLength(1)
 });
+
+test('Universe.toYAML()', () => {
+  const universe = new Universe();
+  const res = universe.toYAML();
+  const expected = "graph:\n  nodes: []\n  edges: []\nhistory:\n  nodes: []\n  edges: []\n"
+  expect(res).toBe(expected)
+})
+
+test('Universe.fromYAML()', () => {
+  const universe = new Universe();
+  const document = "graph:\n  nodes: []\n  edges: []\nhistory:\n  nodes: []\n  edges: []\n"
+  universe.fromYAML(document);
+  expect(universe.graph).toStrictEqual({edges: [], nodes: []})
+  expect(universe.history).toStrictEqual({edges: [], nodes: []})
+})
