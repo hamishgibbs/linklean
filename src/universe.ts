@@ -35,4 +35,9 @@ export class Universe {
     this.graph.edges.push(edge);
     return edge.id;
   }
+
+  // save() to save entire graph (to a file for now)
+
+  // load () to construct entire graph (from a file for now)
+
 }
