@@ -1,5 +1,11 @@
-import { Node } from '../index';
+import { Node, Edge } from '../index';
 
 test('Node Creation', () => {
-  expect(Node('Arnold Schwarzenneger', 'Person')).toBe('Arnold Schwarzenneger');
+  var node = new Node()
+  expect(node).toBe('Arnold Schwarzenneger');
+});
+
+test('Edge Creation', () => {
+  var edge = new Edge("this", "isa", "that")
+  expect(edge).toBe('Arnold Schwarzenneger');
 });
