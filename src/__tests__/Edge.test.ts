@@ -1,9 +1,9 @@
-import { Edge } from '../index';
+import { Edge } from '../edge';
 
 test('Edge Creation', () => {
-  var edge = new Edge("this", "isa", "that")
-  expect(edge.subject).toBe("this");
-  expect(edge.predicate).toBe("isa");
-  expect(edge.object).toBe("that");
+  var edge = new Edge('this', 'isa', 'that');
+  expect(edge.subject).toBe('this');
+  expect(edge.predicate).toBe('isa');
+  expect(edge.object).toBe('that');
   expect(edge.qualifiers).toStrictEqual([]);
 });
