@@ -36,10 +36,24 @@ export class Universe {
     return node.id;
   }
 
+  removeNode(id: string) {
+    const node = this.graph.nodes[id]
+    this.history.nodes[id] = node
+    delete this.graph.nodes[id]
+    return id
+  }
+
   addEdge(subject: string, predicate: string, object: string, qualifiers: IQualifier[] = []) {
     const edge = new Edge(subject, predicate, object, qualifiers);
     this.graph.edges[edge.id] = edge;
     return edge.id;
+  }
+
+  removeEdge(id: string) {
+    const edge = this.graph.edges[id]
+    this.history.edges[id] = edge
+    delete this.graph.edges[id]
+    return id
   }
 
   toYAML() {

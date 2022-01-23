@@ -9,9 +9,18 @@ test('Universe Creation', () => {
 
 test('Universe.addNode()', () => {
   const universe = new Universe();
-  const res = universe.addNode()
+  const res = universe.addNode();
   expect(res).toEqual(expect.not.stringMatching(uuid_re));
   expect(universe.graph.nodes).toHaveProperty(res);
+});
+
+test('Universe.removeNode()', () => {
+  const universe = new Universe();
+  const nodeId = universe.addNode()
+  const res = universe.removeNode(nodeId);
+  expect(universe.graph.nodes).not.toHaveProperty(nodeId);
+  expect(universe.history.nodes).toHaveProperty(nodeId);
+  expect(res).toBe(nodeId)
 });
 
 test('Universe.addEdge()', () => {
@@ -19,6 +28,15 @@ test('Universe.addEdge()', () => {
   const res = universe.addEdge('this', 'isa', 'that', [{ qualifier: 'on', target: 'here' }]);
   expect(res).toEqual(expect.not.stringMatching(uuid_re));
   expect(universe.graph.edges).toHaveProperty(res);
+});
+
+test('Universe.removeEdge()', () => {
+  const universe = new Universe();
+  const edgeId = universe.addEdge('this', 'isa', 'that');
+  const res = universe.removeEdge(edgeId);
+  expect(universe.graph.edges).not.toHaveProperty(edgeId);
+  expect(universe.history.edges).toHaveProperty(edgeId);
+  expect(res).toBe(edgeId)
 });
 
 test('Universe.toYAML()', () => {
